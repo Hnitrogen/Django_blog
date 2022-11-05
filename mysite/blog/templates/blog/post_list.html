@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+<!-- 调包 (链接模板的相对路径)-->
+
+<!-- {% load static %} -->
+<!-- load static 添加css文件-->
+
+    {% block content %}
+    <!-- 添加模板,base.html *: 需要闭标签-->
+
+        {% for post in posts %}
+            <article class="post">
+                <time class="date">
+                    {{ post.published_date }}
+                </time>
+                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                <!-- 给文章标题超链接到其他页面 是url的模板 -->
+                <p>{{ post.text|linebreaksbr }}</p>
+            </article>
+        {% endfor %}
+
+    {% endblock %}
